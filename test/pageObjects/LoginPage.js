@@ -7,17 +7,22 @@ class LoginPage extends BasePage {
     this.usernameField = new Input(`//input[@id="user-name"]`, "username field");
     this.passwordField = new Input(`//input[@id="password"]`, "password field");
     this.loginButton = new Input(`//input[@id="login-button"]`, "Login Button");
+    this.errorMessage = new Label(`//h3[@data-test="error"]`, "error message label");
   }
   async setUsername(username) {
-    await this.usernameField.typeText(username);
+    await this.usernameField.typeTextWithClear(username);
   }
 
   async setPassword(password) {
-    await this.passwordField.typeSecret(password);
+    await this.passwordField.typeSecretWithClear(password);
   }
 
   async clickLoginButton() {
     await this.loginButton.click();
+  }
+
+  async getErrorMessage() {
+    return this.errorMessage.getText();
   }
 }
 
