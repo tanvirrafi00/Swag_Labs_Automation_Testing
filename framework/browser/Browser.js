@@ -1,7 +1,6 @@
-
-import Timeouts from '../constants/Timeouts.js';
-import Logger from '../utils/Logger.js';
-import { Dialog, File, IFrame, Window } from './entities/index.js';
+import Timeouts from "../constants/Timeouts.js";
+import Logger from "../utils/Logger.js";
+import { Dialog, File, IFrame, Window } from "./entities/index.js";
 
 class Browser {
   #Window;
@@ -40,7 +39,7 @@ class Browser {
   /**
    * Open web page by url
    * @param {string} url url to open
-   * @returns {Promise<void>} 
+   * @returns {Promise<void>}
    */
   async openUrl(url) {
     Logger.info(`Open url: "${url}"`);
@@ -52,7 +51,7 @@ class Browser {
    * @returns {Promise<string>} result of getUrl function
    */
   async getCurrentUrl() {
-    Logger.info('Get current url');
+    Logger.info("Get current url");
     const url = await this.#getBrowser().getUrl();
     Logger.info(`Current url: "${url}"`);
     return url;
@@ -65,13 +64,13 @@ class Browser {
    * @returns {Promise<void>} result of getUrl function
    */
   async executeScript(jsCode, args) {
-    Logger.info(`Execute JS code in the browser:\n"${jsCode}"`)
+    Logger.info(`Execute JS code in the browser:\n"${jsCode}"`);
     return this.#getBrowser().execute(jsCode, args);
   }
 
   /**
    * Press keyboard buttons
-   * @param {String, Array[String]} keys - Array of string with keys names or string of key name to press  
+   * @param {String, Array[String]} keys - Array of string with keys names or string of key name to press
    * @returns {Promise<void>} result of getUrl function
    */
   async pressKeys(keys) {
@@ -106,7 +105,9 @@ class Browser {
     Logger.info(`Wait for ${timeout} delay`);
     return this.#getBrowser().pause(timeout);
   }
-};
-
+  async clearCookies() {
+    await this.#getBrowser().deleteAllCookies();
+  }
+}
 
 export default new Browser(browser);

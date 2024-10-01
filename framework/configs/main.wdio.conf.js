@@ -2,6 +2,7 @@ import path from "node:path";
 import fs from "fs-extra";
 
 export const downloadDir = path.resolve("./tmp");
+export const allure_result = path.resolve("./allure-results");
 
 export const mainConfig = {
   runner: "local",
@@ -21,6 +22,7 @@ export const mainConfig = {
   baseUrl: "https://www.saucedemo.com/",
 
   before: function () {
+    fs.emptyDir(allure_result);
     browser.url(this.baseUrl);
   },
 
