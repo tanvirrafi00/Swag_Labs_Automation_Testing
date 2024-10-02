@@ -3,11 +3,12 @@ import validLogin from "../../test data/validLogin.json" assert { type: "json" }
 import invalidLogin from "../../test data/invalidLogin.json" assert { type: "json" };
 import LoginPage from "../pageObjects/LoginPage.js";
 import ProductsPage from "../pageObjects/ProductsPage.js";
-import Browser from "../../framework/browser/Browser.js";
+import path from "node:path";
 import AllureReporter from "@wdio/allure-reporter";
+import fs from "fs-extra";
 describe("Check the Login Functionality", () => {
   before(async () => {
-    await Browser.clearCookies();
+    fs.emptyDir(path.resolve("./allure-results"));
   });
 
   it("TC_01:Check the login functionality with accepted usernames and passwords", async () => {
