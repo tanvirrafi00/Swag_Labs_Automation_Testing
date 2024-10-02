@@ -1,4 +1,4 @@
-import { Button, Label } from "../../framework/elements/index.js";
+import { Button, Dropdown, Label } from "../../framework/elements/index.js";
 import BasePage from "../../framework/page/BasePage.js";
 import { PreciseTextLocator } from "../../framework/utils/locatorHelper.js";
 
@@ -8,6 +8,7 @@ class ProductsPage extends BasePage {
     this.menuButton = new Button(`//button[@id="react-burger-menu-btn"]`, "Menu button");
     this.leftSidebar = new Label(`//div[@class="bm-menu"]`, "Left sidebar");
     this.logoutLink = new Label(`//a[@id="logout_sidebar_link"]`, "Logout Link");
+    this.sortProduct = new Dropdown(`//select[@class="product_sort_container"]`, "sort products");
   }
 
   async clickMenuButton() {
@@ -16,6 +17,10 @@ class ProductsPage extends BasePage {
   async clickLogoutLink() {
     await this.logoutLink.state().waitForDisplayed();
     await this.logoutLink.click();
+  }
+
+  async isSortProductDisplayed() {
+    return await this.sortProduct.state().isDisplayed();
   }
 }
 
