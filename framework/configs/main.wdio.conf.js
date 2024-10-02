@@ -22,7 +22,7 @@ export const mainConfig = {
   baseUrl: "https://www.saucedemo.com/",
 
   before: function () {
-    fs.emptyDir(allure_result);
+    // fs.emptyDir(allure_result);
     browser.url(this.baseUrl);
   },
 
