@@ -30,6 +30,8 @@ describe("Product page functionality", () => {
   });
 
   it("TC_05:Check whether product sort option AZ is working correctly", async () => {
+    AllureReporter.addSeverity("critical");
+
     AllureReporter.addStep("opening login page url");
     await Browser.openUrl(mainConfig.baseUrl);
     AllureReporter.addStep("checking login page is opened");
