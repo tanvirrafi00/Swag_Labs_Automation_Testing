@@ -56,7 +56,7 @@ describe("Product page functionality", () => {
     assert.isTrue(await ProductsPage.checkIsSortedCorrectly(sortedProductList["a-z"]), "product not sorted a-z");
   });
 
-  it.only("TC_06:Check whether product sort option ZA is working correctly", async () => {
+  it("TC_06:Check whether product sort option ZA is working correctly", async () => {
     AllureReporter.addSeverity("critical");
 
     AllureReporter.addStep("opening login page url");
