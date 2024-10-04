@@ -16,17 +16,23 @@ describe("Check the Login Functionality", () => {
 
     AllureReporter.addStep("checking login page is opened");
     assert.isTrue(await LoginPage.isPageOpened());
+
     for (let { username, password } of validLogin) {
       AllureReporter.addStep("set username");
       await LoginPage.setUsername(username);
+
       AllureReporter.addStep("set password");
       await LoginPage.setPassword(password);
+
       AllureReporter.addStep("click login button");
       await LoginPage.clickLoginButton();
+
       AllureReporter.addStep("checking product is opened");
       assert.isTrue(await ProductsPage.isPageOpened(), "Product page is not opened");
+
       AllureReporter.addStep("clicking on menu button");
       await ProductsPage.clickMenuButton();
+
       AllureReporter.addStep("clicking on logout link");
       await ProductsPage.clickLogoutLink();
     }
